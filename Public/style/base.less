@@ -1,0 +1,203 @@
+//@import 'bootstrap/bootstrap.less';
+@import 'bootstrap/variables.less';
+@import 'bootstrap/glyphicons.less';
+@import 'variables.less';
+//@import 'bootstrap.min.css';
+@import 'list.less';
+@import 'edit.less';
+@import 'detail.less';
+
+@import 'addon/auto-complete-editable.less';
+@import 'addon/city-mgr.less';
+@import 'addon/datepicker.less';
+@import 'addon/send-sms.less';
+@import 'addon/select-person.less';
+@import 'addon/table-grid.less';
+@import 'addon/table-input.less';
+@import 'addon/table-tree.less';
+@import 'addon/toggle-edit.less';
+
+/* 新增的 */
+.table-bordered-no > tbody  > tr > td {
+  border: 0 !important;
+}
+
+/* 整体 */
+/* Sticky footer styles  */
+html,
+body {
+  font-family: '微软雅黑','宋体',"Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    height: 100%; /* The html and body elements cannot have any padding or margin. */
+}
+#wrap {   /* Wrapper for page content to push down footer */
+    min-height: 100%;
+    height: auto !important;
+    height: 100%; /* Negative indent footer by its height */
+    margin: 0 auto -120px; /* Pad bottom by footer height */
+    padding: 0 0 120px;
+}
+#ft {   /* Set the fixed height of the footer here */
+    height: 120px;
+    background-color: #f5f5f5;
+}
+
+h1 {
+  font-family: '微软雅黑','宋体',"Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+
+/* top */
+#top .row {
+    margin:0;
+}
+#top .well {
+  margin: 0;
+  padding: 3px;
+}
+#top .links {
+    float: left;
+}
+#top .links dl {
+    margin: 0;
+}
+#top .links dl,
+#top .links dt,
+#top .links dd {
+    display: inline;
+}
+#top .op {
+    float: right;
+}
+
+/* nav */
+.navbar-nav {
+  margin-top: 15px;
+  float: right
+}
+
+.navbar {
+  border-bottom: 2px solid @brand-primary;
+  border-top: 0;
+  margin-bottom: 0;
+}
+
+.navbar-brand {
+  width: 150px;
+  height: 50px;
+  background-image: url(img/logo.jpg);
+  font: 0/0 'aaa';
+}
+
+.navbar-default {
+  background-color: #fff;
+}
+
+.navbar-nav li {
+  margin-right: 5px;
+}
+
+.navbar-nav > li > a{
+  border-bottom: 0;
+  width: 80px;
+  padding:10px 0;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  font-family:'宋体';
+}
+
+.navbar-nav > li > a:hover {
+  color: @brand-primary !important;
+  border-bottom: 4px solid @brand-primary;
+}
+
+.navbar-nav > li.active > a {
+  background-color: #fff !important;
+  color: @brand-primary !important;
+  cursor: default;
+  border-bottom: 4px solid @brand-primary;
+}
+
+.navbar-header {
+    width: 150px;
+}
+
+/* main */
+#bd {
+    overflow: hidden;
+    zoom: 1;
+    position: relative;
+  min-height: 650px;
+}
+#main {
+    float: left;
+    width: 100%;
+}
+#main > .inner {
+    margin-left: 175px;
+    margin-right: 15px;
+    background: #fff;
+    height: 100%;
+    margin-bottom: -9999px;
+    padding-bottom: 9999px;
+    margin-top: 8px;
+  position:relative;
+}
+#main h1 {
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+#main .optbtn {
+  position:absolute; right:0; top:-10px
+}
+
+/* sidebar */
+#sidebar {
+    position: relative;
+    float: left;
+    width: 151px;
+    min-height: 568px;
+    _height: 750px;
+    margin-left: -100%;
+    margin-bottom: -9999px;
+    padding-bottom: 9999px;
+    padding-top: 10px;
+  background-color: @brand-primary;
+}
+
+#sidebar .list-group-item {
+  border: 0;
+  background-color: transparent !important;
+  color: #fff !important;
+}
+
+#sidebar .list-group-item.active {
+  background-color: #fff !important;
+  color: @brand-primary !important;
+  font-weight: bold;
+}
+
+/**/
+.parsley-error-list {
+  color: @brand-danger;
+}
+
+#ft {
+background-color: #f5f5f5;
+text-align: center;
+padding: 18px;
+  }
+
+.border-box {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.pagination .ipt-combin {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}

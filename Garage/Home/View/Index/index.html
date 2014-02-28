@@ -1,0 +1,158 @@
+<h1>维修记录</h1>
+<div class="optbtn">
+    <a class="btn btn-info" href="#">新增按钮</a>
+</div>
+
+<!-- 列表搜索区域 -->
+<div class="row" id="list-search">
+    <form method="post">
+        <table class="table table-input">
+            <colgroup>
+                <col width="60">
+            </colgroup>
+            <tbody>
+            <tr>
+                <td class="key"><div>输入</div></td>
+                <td class="value">
+                    <div>
+                        <input type="text" class="form-control" placeholder="输入" name="">
+                        <button type="submit" class="btn btn-default">搜索</button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<!-- /列表搜索区域 -->
+
+<form method="post">
+<!-- 列表表格区域 -->
+<div class="row" id="list-grid">
+    <table class="table table-bordered table-hover table-grid">
+        <colgroup>
+            <col width="30">
+            <col width="100">
+            <col>
+            <col>
+            <col width="150">
+        </colgroup>
+        <tr>
+            <th><input type="checkbox" widget="check-all" data-check-all-target=".w-check-all"></th>
+            <th>车牌号</th>
+            <th>客户公司</th>
+            <th>客户姓名</th>
+            <th>客户联系方式</th>
+            <th>维修日期</th>
+            <th>维修内容</th>
+            <th>维修费用</th>
+            <th>维修人员</th>
+            <th>操作</th>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="w-check-all" name="cb" value="1"></td>
+            <td>粤Bxx520</td>
+            <td>旺仔科技有限公司</td>
+            <td>兔老板</td>
+            <td>13800013800</td>
+            <td>2014-2-12 12:00:30</td>
+            <td>更换发动机</td>
+            <td>10000元整</td>
+            <td>小李</td>
+            <td>
+                <a type="button" class="btn btn-default" href="">按钮</a>
+                <a type="button" class="btn btn-danger" widget="confirm" href="">删除</a>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="w-check-all" name="cb" value="1"></td>
+            <td>粤Bxx520</td>
+            <td>旺仔科技有限公司</td>
+            <td>兔老板</td>
+            <td>13800013800</td>
+            <td>2014-2-12 12:00:30</td>
+            <td>更换发动机</td>
+            <td>10000元整</td>
+            <td>小李</td>
+            <td>
+                <a type="button" class="btn btn-default" href="">按钮</a>
+                <a type="button" class="btn btn-danger" widget="confirm" href="">删除</a>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="w-check-all" name="cb" value="1"></td>
+            <td>粤Bxx520</td>
+            <td>旺仔科技有限公司</td>
+            <td>兔老板</td>
+            <td>13800013800</td>
+            <td>2014-2-12 12:00:30</td>
+            <td>更换发动机</td>
+            <td>10000元整</td>
+            <td>小李</td>
+            <td>
+                <a type="button" class="btn btn-default" href="">按钮</a>
+                <a type="button" class="btn btn-danger" widget="confirm" href="">删除</a>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="w-check-all" name="cb" value="1"></td>
+            <td>粤Bxx520</td>
+            <td>旺仔科技有限公司</td>
+            <td>兔老板</td>
+            <td>13800013800</td>
+            <td>2014-2-12 12:00:30</td>
+            <td>更换发动机</td>
+            <td>10000元整</td>
+            <td>小李</td>
+            <td>
+                <a type="button" class="btn btn-default" href="">按钮</a>
+                <a type="button" class="btn btn-danger" widget="confirm" href="">删除</a>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="w-check-all" name="cb" value="1"></td>
+            <td>粤Bxx520</td>
+            <td>旺仔科技有限公司</td>
+            <td>兔老板</td>
+            <td>13800013800</td>
+            <td>2014-2-12 12:00:30</td>
+            <td>更换发动机</td>
+            <td>10000元整</td>
+            <td>小李</td>
+            <td>
+                <a type="button" class="btn btn-default" href="">按钮</a>
+                <a type="button" class="btn btn-danger" widget="confirm" href="">删除</a>
+            </td>
+        </tr>
+        
+    </table>
+</div>
+<!-- /列表表格区域 -->
+
+<!-- 列表操作区域 -->
+<div class="row" id="list-op">
+    <!-- 全选 -->
+    <div class="check">
+        <input type="checkbox" widget="check-all" data-check-all-target=".w-check-all">
+        <button type="submit" class="btn btn-default" name="op" value="op1">批量操作</button>
+        <button type="submit" class="btn btn-default" name="op" value="op2">批量操作</button>
+    </div>
+    <!-- 分页 -->
+    <div class="page">
+        <ul class="pagination">
+            <li><span>共100页</span></li>
+            <li class="active"><span>1</span></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><span>...</span></li>
+            <li><a href="#">100</a></li>
+            <li><a href="#">&laquo;</a></li>
+            <li><a href="#">&raquo;</a></li>
+        </ul>
+    </div>
+</div>
+<!-- /列表操作区域 -->
+</form>
+

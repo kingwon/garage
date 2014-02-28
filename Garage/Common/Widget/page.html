@@ -1,0 +1,57 @@
+<?php if ($paginatorOptions['totalItemCount'] > 0): ?>
+    <?php
+    $s = 1;
+    if ($paginatorOptions['pageNumber'] < $s) {
+        $paginatorOptions = $s;
+    }
+    $e = intval(ceil($paginatorOptions['totalItemCount'] / $paginatorOptions['itemCountPerPage']));
+    if ($paginatorOptions['pageNumber'] > $e) {
+        $paginatorOptions['pageNumber'] = $e;
+    }
+    $start = max($paginatorOptions['pageNumber'] - 4, $s);
+    $end = min($paginatorOptions['pageNumber'] + 4, $e);
+    parse_str($_SERVER['QUERY_STRING'], $arr);
+    ?>
+    <div class="page">
+        <ul class="pagination">
+            <li><span>共 <?php echo $paginatorOptions['totalItemCount'] ?> 条</span></li>
+
+            <?php if ($start != $s): ?>
+                <li><a href="?<?php $arr['p'] = $s;
+        echo http_build_query($arr) ?>"><?php echo $s ?></a></li>
+                <li><span>...</span></li>
+            <?php endif ?>
+
+            <?php foreach (range($start, $end) as $p): ?>
+                <li 
+                    <?php if ($p == $paginatorOptions['pageNumber']): ?>
+                        class="active"
+                        <?php endif ?>
+                    >
+                    <?php if ($p == $paginatorOptions['pageNumber']): ?>
+                        <span><?php echo $p ?></span>
+                    <?php else: ?>
+                        <a href="?<?php $arr['p'] = $p;
+                        echo http_build_query($arr) ?>"><?php echo $p ?></a>
+                <?php endif ?>
+                </li>
+            <?php endforeach ?>
+
+            <?php if ($end != $e): ?>
+                <li><span>...</span></li>
+                <li><a href="?<?php $arr['p'] = $e;
+                echo http_build_query($arr) ?>"><?php echo $e ?></a></li>
+            <?php endif ?>
+
+            <?php if ($start != $s): ?>
+                <li><a href="?<?php $arr['p'] = $paginatorOptions['pageNumber'] - 1;
+                echo http_build_query($arr) ?>">&laquo;</a></li>
+            <?php endif ?>
+
+    <?php if ($end != $e): ?>
+                <li><a href="?<?php $arr['p'] = $paginatorOptions['pageNumber'] + 1;
+        echo http_build_query($arr) ?>">&raquo;</a></li>
+    <?php endif ?>
+        </ul>
+    </div>
+    <?php endif ?>
