@@ -1,0 +1,68 @@
+<h1>维修记录</h1>
+<div class="optbtn">
+    <a class="btn btn-info" href="{:U('type/add')}">新增按钮</a>
+</div>
+
+<!-- 列表搜索区域 -->
+<div class="row" id="list-search">
+    <form method="post">
+        <table class="table table-input">
+            <colgroup>
+                <col width="60">
+            </colgroup>
+            <tbody>
+            <tr>
+                <td class="key"><div>输入</div></td>
+                <td class="value">
+                    <div>
+                        <input type="text" class="form-control" placeholder="输入" name="">
+                        <button type="submit" class="btn btn-default">搜索</button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<!-- /列表搜索区域 -->
+
+<form method="post">
+<!-- 列表表格区域 -->
+<div class="row" id="list-grid">
+    <table class="table table-bordered table-hover table-grid">
+            <tr>
+                <th>维修项目号</th>
+                <th>维修项目名称</th>
+                <th>维修项目描述</th>
+                <th>项目基础收费</th>
+                <th>操作</th>
+            </tr>
+        <volist name="list" id="val">
+            <tr>
+                <!-- <th><input type="checkbox" widget="check-all" data-check-all-target=".w-check-all"></th> -->
+                <td>{$val.type_id}</td>
+                <td>{$val.type_name}</td>
+                <td>{$val.type_describe}</td>
+                <td>{$val.type_base_charge}</td>
+                <td><a href="{:U('type/edit', type_id=$val.type_id)}">编辑</a></td>
+            </tr>
+        </volist>
+        
+    </table>
+</div>
+<!-- /列表表格区域 -->
+
+<!-- 列表操作区域 -->
+<div class="row" id="list-op">
+    <!-- 全选 -->
+<!--     <div class="check">
+        <input type="checkbox" widget="check-all" data-check-all-target=".w-check-all">
+        <button type="submit" class="btn btn-default" name="op" value="op1">批量操作</button>
+        <button type="submit" class="btn btn-default" name="op" value="op2">批量操作</button>
+    </div> -->
+    <!-- 分页 -->
+    {$page}
+</div>
+<!-- /列表操作区域 -->
+</form>
+
