@@ -1,0 +1,102 @@
+<h1>新增配件</h1>
+
+<div class="row" id="edit">
+    <form method="post" action="{:U('Parts/save')}" widget="validation">
+        <input type="hidden" name="type_id" value="{$data.type_id}">
+        <table class="table table-input">
+            <colgroup>
+                <col width="1">
+                <col width="100">
+            </colgroup>
+            <tbody>
+            <tr>
+                <td class="icon"><div></div></td>
+                <td class="key"><div>配件名称：</div></td>
+                <td class="value">
+                    <div>
+                        <input type="text" class="form-control"
+                               name="parts_name"
+                               value="{$data.parts_name}" 
+                               data-required="true"
+                               data-required-message="非空"
+                               data-error-container="#tipsCn"
+                                >
+                        <span class="error" id="tipsCn"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="icon"><div></div></td>
+                <td class="key"><div>进货价：</div></td>
+                <td class="value">
+                    <div>
+                        <input type="text" class="form-control"
+                               name="parts_cost"
+                               value="{$data.parts_cost}" 
+                               data-required="true"
+                               data-required-message="非空"
+                               data-error-container="#parts_cost"
+                                >
+                        <span class="error" id="parts_cost"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="icon"><div></div></td>
+                <td class="key"><div>配件尺寸规格：</div></td>
+                <td class="value">
+                    <div>
+                        <input type="text" class="form-control"
+                               name="parts_size"
+                               value="{$data.parts_size}" 
+                               data-required="true"
+                               data-required-message="非空"
+                               data-error-container="#parts_size"
+                                >
+                        <span class="error" id="parts_size"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="icon"><div></div></td>
+                <td class="key"><div>供应商：</div></td>
+                <td class="value">
+                    <div>
+                        <input type="text" class="form-control"
+                               name="parts_supplier"
+                               value="{$data.parts_supplier}" 
+                               data-required="true"
+                               data-required-message="非空"
+                               data-error-container="#parts_supplier"
+                                >
+                        <span class="error" id="parts_supplier"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="icon"><div></div></td>
+                <td class="key"><div>配件说明：</div></td>
+                <td class="value">
+                    <div>
+                        <textarea name="parts_describe" class="form-control" style="width:200px;height:100px;">{$data.parts_describe}</textarea>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="op">
+            <input type="submit" class="btn btn-default" value="保存">
+            <a class="btn btn-warning" href="">取消</a>
+        </div>
+    </form>
+</div>
+<script>
+    function onAjaxSaveCompleted(obj){
+        console.log(obj.data);
+        if (obj.data === true) {
+            window.location.href = obj.data.url;
+        }else{
+            
+        }
+    }
+</script>

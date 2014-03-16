@@ -1,6 +1,6 @@
-<h1>维修记录</h1>
+<h1>库存管理</h1>
 <div class="optbtn">
-    <a class="btn btn-info" href="{:U('repair/add')}">新增维修记录</a>
+    <a class="btn btn-info" href="{:U('Parts/add')}">新增配件</a>
 </div>
 
 <!-- 列表搜索区域 -->
@@ -12,7 +12,6 @@
             </colgroup>
             <tbody>
             <tr>
-                <td class="key"><div>输入</div></td>
                 <td class="value">
                     <div>
                         <input type="text" class="form-control" placeholder="输入" name="">
@@ -30,40 +29,25 @@
 <!-- 列表表格区域 -->
 <div class="row" id="list-grid">
     <table class="table table-bordered table-hover table-grid">
-        <!-- <colgroup>
-            <col width="30">
-            <col width="100">
-            <col>
-            <col>
-            <col width="150">
-        </colgroup> -->
-        
             <tr>
-                <!-- <th><input type="checkbox" widget="check-all" data-check-all-target=".w-check-all"></th> -->
-                <th>维修流水号</th>
-                <th>车牌号</th>
-                <th>客户公司</th>
-                <th>客户姓名</th>
-                <th>客户联系方式</th>
-                <th>维修日期</th>
-                <th>维修内容</th>
-                <th>维修费用</th>
-                <th>维修人员</th>
+                <th>配件编号</th>
+                <th>配件名称</th>
+                <th>配件进货价</th>
+                <th>配件尺寸规格</th>
+                <th>配件说明</th>
+                <th>配件供应商</th>
                 <th>操作</th>
             </tr>
         <volist name="list" id="val">
             <tr>
                 <!-- <th><input type="checkbox" widget="check-all" data-check-all-target=".w-check-all"></th> -->
-                <td>{$val.detail_id}</td>
-                <td>{$val.customer_car_number}</td>
-                <td>{$val.customer_company}</td>
-                <td>{$val.customer_name}</td>
-                <td>{$val.customer_phone}</td>
-                <td>{$val.detail_fix_time}</td>
-                <td>{$val.type_name}</td>
-                <td>{$val.detail_fix_charge}</td>
-                <td>{$val.staff_name}</td>
-                <td><a href="#">编辑</a></td>
+                <td>{$val.parts_id}</td>
+                <td>{$val.parts_name}</td>
+                <td>{$val.parts_cost}</td>
+                <td>{$val.parts_size}</td>
+                <td>{$val.parts_describe}</td>
+                <td>{$val.parts_supplier}</td>
+                <td><a href="{:U('Parts/edit', 'parts_id=' . $val['parts_id'])}">编辑</a></td>
             </tr>
         </volist>
         

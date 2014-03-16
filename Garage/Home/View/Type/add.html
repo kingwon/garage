@@ -1,7 +1,8 @@
 <h1>新增维修记录</h1>
 
 <div class="row" id="edit">
-    <form method="post" action="{:U('Repair/addSave')}" widget="validation">
+    <form method="post" action="{:U('Type/save')}" widget="validation">
+        <input type="hidden" name="type_id" value="{$data.type_id}">
         <table class="table table-input">
             <colgroup>
                 <col width="1">
@@ -9,36 +10,15 @@
             </colgroup>
             <tbody>
             <tr>
-                <td class="icon"><div><span class="icon-star"></span></div></td>
-                <td class="key"><div>车牌号：</div></td>
-                <td class="value">
-                    <div>
-                        <input type="text" class="form-control"
-                               name="detail_car_number" 
-                               value="" 
-                               data-required="true"
-                               data-required-message="非空"
-                               data-minlength="6"
-                               data-minlength-message="最小长度为6"
-                               data-error-container="#tipsMinlength"
-                                >
-                        <span class="text-muted">车牌号必须填写。填写格式：粤B:WW520</span>
-                        <span class="error" id="tipsMinlength"></span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
                 <td class="icon"><div></div></td>
-                <td class="key"><div>客户姓名：</div></td>
+                <td class="key"><div>维修项目名称：</div></td>
                 <td class="value">
                     <div>
                         <input type="text" class="form-control"
-                               name="customer_name"
-                               value="" 
+                               name="type_name"
+                               value="{$data.type_name}" 
                                data-required="true"
                                data-required-message="非空"
-                               data-regexp="^[\u4e00-\u9faf]+$"
-                               data-regexp-message="只能输入汉字"
                                data-error-container="#tipsCn"
                                 >
                         <span class="error" id="tipsCn"></span>
@@ -47,31 +27,21 @@
             </tr>
             <tr>
                 <td class="icon"><div></div></td>
-                <td class="key"><div>联系方式：</div></td>
+                <td class="key"><div>维修项目说明</div></td>
                 <td class="value">
                     <div>
-                        <input type="text" class="form-control"
-                               name="customer_phone"
-                               value="" 
-                               data-required="true"
-                               data-required-message="非空"
-                               data-type="digits"
-                               data-type-digits-message="只能输入数字"
-                               data-error-container="#tipsNumber"
-                                >
-                        <span class="error" id="tipsNumber"></span>
-                        
+                        <textarea name="type_describe" class="form-control" style="width:200px;height:100px;">{$data.type_describe}</textarea>
                     </div>
                 </td>
             </tr>
             <tr>
                 <td class="icon"><div></div></td>
-                <td class="key"><div>客户公司\单位：</div></td>
+                <td class="key"><div>项目基本收费：</div></td>
                 <td class="value">
                     <div>
                         <input type="text" class="form-control"
-                               name="customer_company"
-                               value="" 
+                               name="type_base_charge"
+                               value="{$data.type_base_charge}" 
                                data-required="true"
                                data-required-message="非空"
                                data-error-container="#tipsAlp"
@@ -80,104 +50,21 @@
                     </div>
                 </td>
             </tr>
-            <tr>
-                <td class="icon"><div><span class="icon-star"></span></div></td>
-                <td class="key"><div>维修项目：</div></td>
-                <td class="value">
-                    <div>
-                        <select class="form-control"
-                                name="detail_fix_type_id" 
-                                data-required="true"
-                                data-error-message="请选择"
-                                data-error-container="#tipsSelect">
-                            <option value="">请选择</option>
-                            <volist name="type" id="type">
-                                <option value="{$key}">{$type}</option>
-                            </volist>
-                        </select>
-                        <span class="error" id="tipsText"></span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="icon"><div><span class="icon-star"></span></div></td>
-                <td class="key"><div>维修费用：</div></td>
-                <td class="value">
-                    <div>
-                        <input type="text" class="form-control" id="password"
-                               data-required="true"
-                               value="" 
-                               name="detail_fix_charge" 
-                               data-required-message="维修费用不能为空"
-                               data-type="digits"
-                               data-type-digits-message="只能输入数字"
-                               data-error-container="#tipsPw">
-                        <span class="error" id="tipsPw"></span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="icon"><div></div></td>
-                <td class="key"><div>维修员工：</div></td>
-                <td class="value">
-                    <div>
-                        <select class="form-control"
-                                name="detail_fix_staff_id" 
-                                data-required="true"
-                                data-error-message="请选择"
-                                data-error-container="#tipsSelect">
-                            <option value="">请选择</option>
-                            <volist name="staff" id="staff">
-                                <option value="{$key}">{$staff}</option>
-                            </volist>
-                        </select>
-                        <span class="error" id="tipsPw2"></span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="icon"></td>
-                <td class="key"><div>维修时间：</div></td>
-                <td class="value">
-                    <div>
-                        <input type="text" name="detail_fix_time" value="" class="form-control" style="width: 200px;" widget="datepicker" readonly>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="icon"></td>
-                <td class="key"><div>维修配件：</div></td>
-                <td class="value">
-                    <div>
-                        <select class="form-control"
-                                name="detail_fix_parts_id"
-                                data-required="true"
-                                data-error-message="请选择"
-                                data-error-container="#tipsSelect">
-                            <option value="">请选择</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                        </select>
-                        <span class="error" id="tipsPw2"></span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="icon"></td>
-                <td class="key"><div>维修备注：</div></td>
-                <td class="value">
-                    <div>
-                        <textarea name="detail_fix_describe" class="form-control" style="width:200px;height:100px;"></textarea>
-                    </div>
-                </td>
-            </tr>
-            
             </tbody>
         </table>
         <div class="op">
             <input type="submit" class="btn btn-default" value="保存">
             <a class="btn btn-warning" href="">取消</a>
-            <a href="{:U('Repair/addSave')}" target="_blank">test</a>
         </div>
     </form>
 </div>
+<script>
+    function onAjaxSaveCompleted(obj){
+        console.log(obj.data);
+        if (obj.data === true) {
+            window.location.href = obj.data.url;
+        }else{
+            
+        }
+    }
+</script>

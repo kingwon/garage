@@ -1,6 +1,6 @@
-<h1>维修记录</h1>
+<h1>维修项目</h1>
 <div class="optbtn">
-    <a class="btn btn-info" href="{:U('type/add')}">新增按钮</a>
+    <a class="btn btn-info" href="{:U('Type/add')}">新增项目</a>
 </div>
 
 <!-- 列表搜索区域 -->
@@ -12,7 +12,6 @@
             </colgroup>
             <tbody>
             <tr>
-                <td class="key"><div>输入</div></td>
                 <td class="value">
                     <div>
                         <input type="text" class="form-control" placeholder="输入" name="">
@@ -44,7 +43,7 @@
                 <td>{$val.type_name}</td>
                 <td>{$val.type_describe}</td>
                 <td>{$val.type_base_charge}</td>
-                <td><a href="{:U('type/edit', type_id=$val.type_id)}">编辑</a></td>
+                <td><a href="{:U('type/edit', 'type_id=' . $val['type_id'])}">编辑</a></td>
             </tr>
         </volist>
         
