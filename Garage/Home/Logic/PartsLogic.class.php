@@ -8,12 +8,12 @@
 namespace Home\Logic;
 use Think\Model;
 
-class RepairTypeLogic extends Model {
+class PartsLogic extends Model {
 
-    protected $typeObj = '';
+    protected $partsObj = '';
     
     public function __construct(){
-        $this->typeObj = D('RepairType', 'Model');
+        $this->partsObj = D('Parts', 'Model');
     }
     
     /**
@@ -21,10 +21,10 @@ class RepairTypeLogic extends Model {
     *
     */
     public function add(array $post){
-        $post['type_create_by'] = 1;
-        $post['type_create_time'] = date('Y-m-d H:i:s');
-        $this->typeObj->create($post);
-        return $this->typeObj->add();
+        $post['parts_create_by'] = 1;
+        $post['parts_create_time'] = date('Y-m-d H:i:s');
+        $this->partsObj->create($post);
+        return $this->partsObj->add();
     }
     
     /**
@@ -32,11 +32,11 @@ class RepairTypeLogic extends Model {
     *
     */
     public function edit(array $post){
-        $post['type_last_modify_by'] = 1;
-        $post['type_last_modify_time'] = date('Y-m-d H:i:s');
+        $post['parts_last_modify_by'] = 1;
+        $post['parts_last_modify_time'] = date('Y-m-d H:i:s');
         var_dump($post);
-        $editRs = $this->typeObj->save($post);
-        echo $this->typeObj->getLastSql();
+        $editRs = $this->partsObj->save($post);
+        echo $this->partsObj->getLastSql();
         return $editRs;
     }
     
@@ -45,7 +45,7 @@ class RepairTypeLogic extends Model {
     *
     */
     public function save(array $post){
-        if(empty($post['type_id'])){
+        if(empty($post['parts_id'])){
             return $this->add($post);
         }else{
             return $this->edit($post);
@@ -60,9 +60,9 @@ class RepairTypeLogic extends Model {
         $page['pageSize'] = 20;
         $p = 1;
         if(false !== $page){
-            $this->typeObj->page($p, $page['pageSize']);
+            $this->partsObj->page($p, $page['pageSize']);
         }
-        $rs = $this->typeObj->select();
+        $rs = $this->partsObj->select();
         return $rs;
     }
     
@@ -71,20 +71,20 @@ class RepairTypeLogic extends Model {
     * 获取所有维修项目idname
     *
     */
-    public function getOneById($typeId){
-        return $this->typeObj->where(array('type_id' => $typeId))->find();
+    public function getOneById($partsId){
+        return $this->partsObj->where(array('parts_id' => $partsId))->find();
     }
     
     /**
     * 获取所有维修项目idname
     *
     */
-    public function getAllTypeIdNames($args = array()){
-        $typeArr = $this->typeObj->where($args)->select();
+    public function getAllpartsIdNames($args = array()){
+        $partsArr = $this->partsObj->where($args)->select();
         $idName = array();
-        if(!empty($typeArr)){
-            foreach ($typeArr as $key => $value) {
-                $idName[$value['type_id']] = $value['type_name'];
+        if(!empty($partsArr)){
+            foreach ($partsArr as $key => $value) {
+                $idName[$value['parts_id']] = $value['parts_name'];
             }
         }
         return $idName;

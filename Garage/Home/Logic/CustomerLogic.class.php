@@ -28,11 +28,13 @@ class CustomerLogic extends Model {
     * 获取维修记录列表
     *
     */
-    public function getList(array $args, &$page){
+    public function getList(array $args, &$page = false, $colums){
         $page['pageSize'] = 20;
         $p = 1;
-        $rs = $this->cusObj->page($p, $page['pageSize'])->select();
-        echo $this->cusObj->getLastSql();
+        if(false !== $page){
+            $this->cusObj->page($p, $page['pageSize']);
+        }
+        $rs = $this->cusObj->select();
         return $rs;
     }
 }

@@ -14,8 +14,9 @@ class CustomerController extends Controller {
     }
     
     public function lists(){
-        $list = D('Detail')->getList();
-        var_dump($list);
+        $list = D('Customer')->getList();
+        // var_dump($list);
+        $this->assign('list', $list);
         $this->display();
     }
     

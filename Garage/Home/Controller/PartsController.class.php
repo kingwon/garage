@@ -8,10 +8,10 @@
 namespace Home\Controller;
 use Think\Controller;
 use \Exception;
-class TypeController extends Controller {
+class PartsController extends Controller {
     
     public function lists(){
-        $list = D('RepairType')->getList();
+        $list = D('Parts')->getList();
         
         $this->assign('list', $list);
         $this->display();
@@ -30,8 +30,8 @@ class TypeController extends Controller {
     *
     */
     public function edit(){
-        $typeId = I('type_id');
-        $data = D('RepairType')->getOneById($typeId);
+        $partsId = I('parts_id');
+        $data = D('Parts')->getOneById($partsId);
         
         $this->assign('data', $data);
         $this->display('add');
@@ -44,8 +44,8 @@ class TypeController extends Controller {
     public function save(){
         $postData = I();
         try{
-            $rs = D('RepairType')->save($postData);
-            exit(json_encode(true, null, 'Type/lists'));
+            $rs = D('Parts')->save($postData);
+            exit(json_encode(true, null, 'Parts/lists'));
         }catch(Exception $e){
             exit(json_encode(false, $e->getMessage()));
         }
