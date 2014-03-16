@@ -10,18 +10,18 @@ use Think\Model;
 
 class StaffLogic extends Model {
 
-    protected $cusObj = '';
+    protected $staffObj = '';
     
     public function __construct(){
-        $this->cusObj = D('Staff', 'Model');
+        $this->staffObj = D('Staff', 'Model');
     }
     /**
     * 新增维修记录
     *
     */
     public function add(array $post){
-        $this->cusObj->create($post);
-        return $this->cusObj->add();
+        $this->staffObj->create($post);
+        return $this->staffObj->add();
     }
     
     /**
@@ -32,11 +32,20 @@ class StaffLogic extends Model {
         $page['pageSize'] = 20;
         $p = 1;
         if(false !== $page){
-            $this->cusObj->page($p, $page['pageSize']);
+            $this->staffObj->page($p, $page['pageSize']);
         }
-        $rs = $this->cusObj->select();
+        $rs = $this->staffObj->select();
         return $rs;
     }
     
-    public function
+    public function getAllStaffIdNames($args = array()){
+        $staffArr = $this->getList($args);
+        $idName = array();
+        if(!empty($staffArr)){
+            foreach ($staffArr as $key => $value) {
+                $idName[$value['staff_id']] = $value['staff_name'];
+            }
+        }
+        return $idName;
+    }
 }

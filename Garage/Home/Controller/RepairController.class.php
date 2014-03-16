@@ -40,10 +40,11 @@ class RepairController extends Controller {
     *
     */
     public function add(){
-        $staff = D('Staff')->getList();
+        $staff = D('Staff')->getAllStaffIdNames();
+        $type = D('RepairType')->getAllTypeIdNames();
         // var_dump($staff);
         $this->assign('staff', $staff);
-        $this->assign('staff', $staff);
+        $this->assign('type', $type);
         $this->display();
     }
 
@@ -52,26 +53,25 @@ class RepairController extends Controller {
     *
     */
     public function addSave(){
-        // try{
-            // $post = I('post');
-        // var_dump(C());
-            $post = array(
-                'customer_id' => mt_rand(1, 9),
-                'detail_car_number' => '粤B:'. mt_rand(100, 900) . 'WW',
-                'detail_fix_type_id' => mt_rand(1, 9),
-                'detail_fix_charge' => mt_rand(1, 9) . '30.22',
-                'detail_fix_staff_id' => mt_rand(1, 9),
-                'detail_fix_time' => date('Y-h-m H:i:s', time()),
-                'detail_fix_parts_id' => mt_rand(1, 9),
-                'detail_fix_describe' => '李某某今天修了保险杠',
-                'detail_create_by' => 'admin',
-                'detail_create_time' => date('Y-h-m H:i:s', time()));
-            
+        try{
+            $post = I();
+        // var_dump($post);
+            // $post = array(
+            //     'customer_id' => mt_rand(1, 9),
+            //     'detail_car_number' => '粤B:'. mt_rand(100, 900) . 'WW',
+            //     'detail_fix_type_id' => mt_rand(1, 9),
+            //     'detail_fix_charge' => mt_rand(1, 9) . '30.22',
+            //     'detail_fix_staff_id' => mt_rand(1, 9),
+            //     'detail_fix_time' => date('Y-h-m H:i:s', time()),
+            //     'detail_fix_parts_id' => mt_rand(1, 9),
+            //     'detail_fix_describe' => '李某某今天修了保险杠',
+            //     'detail_create_by' => 'admin',
+            //     'detail_create_time' => date('Y-h-m H:i:s', time()));
             $rs = D('Detail')->add($post);
             var_dump($rs);
             //$this->display();
-        // }catch(Exception $e){
-        //     exit(json_encode(true, $e->getMessage()));
-        // }
+        }catch(Exception $e){
+            exit(json_encode(true, $e->getMessage()));
+        }
     }
 }

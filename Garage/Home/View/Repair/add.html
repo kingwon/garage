@@ -91,8 +91,9 @@
                                 data-error-message="请选择"
                                 data-error-container="#tipsSelect">
                             <option value="">请选择</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
+                            <volist name="type" id="type">
+                                <option value="{$key}">{$type}</option>
+                            </volist>
                         </select>
                         <span class="error" id="tipsText"></span>
                     </div>
@@ -126,8 +127,9 @@
                                 data-error-message="请选择"
                                 data-error-container="#tipsSelect">
                             <option value="">请选择</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
+                            <volist name="staff" id="staff">
+                                <option value="{$key}">{$staff}</option>
+                            </volist>
                         </select>
                         <span class="error" id="tipsPw2"></span>
                     </div>
@@ -165,7 +167,7 @@
                 <td class="key"><div>维修备注：</div></td>
                 <td class="value">
                     <div>
-                        <textarea class="form-control" style="width:200px;height:100px;"></textarea>
+                        <textarea name="detail_fix_describe" class="form-control" style="width:200px;height:100px;"></textarea>
                     </div>
                 </td>
             </tr>

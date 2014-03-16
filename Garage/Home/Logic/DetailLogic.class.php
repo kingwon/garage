@@ -15,14 +15,21 @@ class DetailLogic extends Model {
     public function __construct(){
         $this->detailObj = D('Detail', 'Model');
     }
+    
     /**
     * 新增维修记录
     *
     */
     public function add(array $post){
-        // $detailObj = D('Detail', 'Model');
+        $custObj = D('Customer', 'Model');
+        $post['detail_create_time'] = $post['customer_create_time'] = date('Y-h-m H:i:s', time());
+        $post['customer_create_by'] = $post['detail_create_by'] = 1;
+        $custObj->create($post);
+        $custId = $custObj->add();
+        $post['customer_id'] = $custId;
         $this->detailObj->create($post);
-        return $this->detailObj->add();
+        $detailRs = $this->detailObj->add();
+        return $detailRs;
     }
     
     /**

@@ -14,7 +14,7 @@ class DetailModel extends Model {
     * 新增维修记录
     *
     */
-    public function add(array $args){
+    // public function add(array $args){
         
-    }
+    // }
 }
