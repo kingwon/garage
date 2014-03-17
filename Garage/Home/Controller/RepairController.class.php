@@ -15,23 +15,10 @@ class RepairController extends Controller {
     }
     
     public function lists(){
-        $list = D('Detail')->getList();
-        // var_dump($list);
-        $page = '<div class="page">
-        <ul class="pagination">
-            <li><span>共100页</span></li>
-            <li class="active"><span>1</span></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><span>...</span></li>
-            <li><a href="#">100</a></li>
-            <li><a href="#">&laquo;</a></li>
-            <li><a href="#">&raquo;</a></li>
-        </ul>
-    </div>';
+        $args = I();
+        $list = D('Detail')->getList($args, $page);
         $this->assign('list', $list);
-        $this->assign('page', $page);
+        $this->assign('page', $page->show());
         $this->display();
     }
     
@@ -42,36 +29,43 @@ class RepairController extends Controller {
     public function add(){
         $staff = D('Staff')->getAllStaffIdNames();
         $type = D('RepairType')->getAllTypeIdNames();
-        // var_dump($staff);
+        $parts = D('Parts')->getAllpartsIdNames();
+        
         $this->assign('staff', $staff);
         $this->assign('type', $type);
+        $this->assign('parts', $parts);
         $this->display();
+    }
+
+    /**
+    * 编辑维修记录
+    *
+    */
+    public function edit(){
+        $detailId = I('detail_id');
+        $data = D('Detail')->getOneById($detailId);
+        $staff = D('Staff')->getAllStaffIdNames();
+        $type = D('RepairType')->getAllTypeIdNames();
+        $parts = D('Parts')->getAllpartsIdNames();
+        
+        $this->assign('data', $data);
+        $this->assign('staff', $staff);
+        $this->assign('type', $type);
+        $this->assign('parts', $parts);
+        $this->display('add');
     }
 
     /**
     * 保存维修记录
     *
     */
-    public function addSave(){
+    public function save(){
         try{
             $post = I();
-        // var_dump($post);
-            // $post = array(
-            //     'customer_id' => mt_rand(1, 9),
-            //     'detail_car_number' => '粤B:'. mt_rand(100, 900) . 'WW',
-            //     'detail_fix_type_id' => mt_rand(1, 9),
-            //     'detail_fix_charge' => mt_rand(1, 9) . '30.22',
-            //     'detail_fix_staff_id' => mt_rand(1, 9),
-            //     'detail_fix_time' => date('Y-h-m H:i:s', time()),
-            //     'detail_fix_parts_id' => mt_rand(1, 9),
-            //     'detail_fix_describe' => '李某某今天修了保险杠',
-            //     'detail_create_by' => 'admin',
-            //     'detail_create_time' => date('Y-h-m H:i:s', time()));
-            $rs = D('Detail')->add($post);
-            var_dump($rs);
-            //$this->display();
+            $rs = D('Detail')->save($post);
         }catch(Exception $e){
-            exit(json_encode(true, $e->getMessage()));
+            json(true, $e->getMessage());
         }
+        json(false, null, U('Repair/lists'));
     }
 }

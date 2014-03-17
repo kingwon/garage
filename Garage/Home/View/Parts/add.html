@@ -1,7 +1,8 @@
-<h1>新增配件</h1>
+<h1>{:$Think.ACTION_NAME ==='edit' ? '编辑' : '新增'}配件</h1>
 
 <div class="row" id="edit">
-    <form method="post" action="{:U('Parts/save')}" widget="validation">
+    <form method="post" action="{:U('Parts/save')}" data-ajax-save-oncompleted="onAjaxSaveCompleted"
+        widget="ajax-save validation">
         <input type="hidden" name="type_id" value="{$data.type_id}">
         <table class="table table-input">
             <colgroup>
@@ -91,12 +92,14 @@
     </form>
 </div>
 <script>
-    function onAjaxSaveCompleted(obj){
-        console.log(obj.data);
-        if (obj.data === true) {
-            window.location.href = obj.data.url;
-        }else{
-            
+    function onAjaxSaveCompleted(obj) {
+        if (obj.json.error) {
+            util.modal({
+                body: obj.json.message
+            });
+        } else {
+            window.location.href = obj.json.data;
         }
+        return false;
     }
 </script>

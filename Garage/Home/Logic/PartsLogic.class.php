@@ -34,9 +34,7 @@ class PartsLogic extends Model {
     public function edit(array $post){
         $post['parts_last_modify_by'] = 1;
         $post['parts_last_modify_time'] = date('Y-m-d H:i:s');
-        var_dump($post);
         $editRs = $this->partsObj->save($post);
-        echo $this->partsObj->getLastSql();
         return $editRs;
     }
     
@@ -57,10 +55,10 @@ class PartsLogic extends Model {
     *
     */
     public function getList(array $args, &$page = false, $colums){
-        $page['pageSize'] = 20;
-        $p = 1;
         if(false !== $page){
-            $this->partsObj->page($p, $page['pageSize']);
+            $countObj = clone $this->partsObj;
+            $page = new \Think\Page($countObj->count(), 10);
+            $this->partsObj->page(($args['p'] ? : $page->firstRow) , $page->listRows);
         }
         $rs = $this->partsObj->select();
         return $rs;

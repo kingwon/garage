@@ -11,8 +11,10 @@ use \Exception;
 class PartsController extends Controller {
     
     public function lists(){
-        $list = D('Parts')->getList();
+        $args = I();
+        $list = D('Parts')->getList($args, $page);
         
+        $this->assign('page', $page->show());
         $this->assign('list', $list);
         $this->display();
     }
@@ -45,9 +47,9 @@ class PartsController extends Controller {
         $postData = I();
         try{
             $rs = D('Parts')->save($postData);
-            exit(json_encode(true, null, 'Parts/lists'));
         }catch(Exception $e){
-            exit(json_encode(false, $e->getMessage()));
+            json(true, $e->getMessage());
         }
+        json(false, null, U('Parts/lists'));
     }
 }

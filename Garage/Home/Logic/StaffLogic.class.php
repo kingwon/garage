@@ -15,8 +15,9 @@ class StaffLogic extends Model {
     public function __construct(){
         $this->staffObj = D('Staff', 'Model');
     }
+    
     /**
-    * 新增维修记录
+    * 新增职员
     *
     */
     public function add(array $post){
@@ -25,14 +26,14 @@ class StaffLogic extends Model {
     }
     
     /**
-    * 获取维修记录列表
+    * 获取列表
     *
     */
     public function getList(array $args, &$page = false, $colums){
-        $page['pageSize'] = 20;
-        $p = 1;
         if(false !== $page){
-            $this->staffObj->page($p, $page['pageSize']);
+            $countObj = clone $this->staffObj;
+            $page = new \Think\Page($countObj->count(), 10);
+            $this->staffObj->page(($args['p'] ? : $page->firstRow) , $page->listRows);
         }
         $rs = $this->staffObj->select();
         return $rs;

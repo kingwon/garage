@@ -43,11 +43,11 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="{:U('Repair/lists')}">维修管理</a></li>
-                        <li><a href="{:U('Customer/lists')}">客户管理</a></li>
-                        <li><a href="{:U('Type/lists')}">项目管理</a></li>
-                        <li><a href="{:U('Parts/lists')}">库存管理</a></li>
-                        <li><a href="{:U('Repair/lists')}">系统设置</a></li>
+                        <li {:$Think.CONTROLLER_NAME === 'Repair' ? 'class="active"' : ''}><a href="{:U('Repair/lists')}">维修管理</a></li>
+                        <li {:$Think.CONTROLLER_NAME === 'Customer' ? 'class="active"' : ''}><a href="{:U('Customer/lists')}">客户管理</a></li>
+                        <li {:$Think.CONTROLLER_NAME === 'Type' ? 'class="active"' : ''}><a href="{:U('Type/lists')}">项目管理</a></li>
+                        <li {:$Think.CONTROLLER_NAME === 'Parts' ? 'class="active"' : ''}><a href="{:U('Parts/lists')}">库存管理</a></li>
+                        <li {:$Think.CONTROLLER_NAME === 'System' ? 'class="active"' : ''}><a href="{:U('System/lists')}">系统设置</a></li>
                     </ul>
                 </div>
             </div>

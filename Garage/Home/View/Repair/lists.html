@@ -63,7 +63,7 @@
                 <td>{$val.type_name}</td>
                 <td>{$val.detail_fix_charge}</td>
                 <td>{$val.staff_name}</td>
-                <td><a href="#">编辑</a></td>
+                <td><a href="{:U('Repair/edit', array('detail_id' => $val['detail_id']))}">编辑</a></td>
             </tr>
         </volist>
         

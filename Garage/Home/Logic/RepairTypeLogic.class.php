@@ -34,9 +34,7 @@ class RepairTypeLogic extends Model {
     public function edit(array $post){
         $post['type_last_modify_by'] = 1;
         $post['type_last_modify_time'] = date('Y-m-d H:i:s');
-        var_dump($post);
         $editRs = $this->typeObj->save($post);
-        echo $this->typeObj->getLastSql();
         return $editRs;
     }
     
@@ -53,19 +51,18 @@ class RepairTypeLogic extends Model {
     }
     
     /**
-    * 获取维修记录列表
+    * 获取列表
     *
     */
     public function getList(array $args, &$page = false, $colums){
-        $page['pageSize'] = 20;
-        $p = 1;
         if(false !== $page){
-            $this->typeObj->page($p, $page['pageSize']);
+            $countObj = clone $this->typeObj;
+            $page = new \Think\Page($countObj->count(), 10);
+            $this->typeObj->page(($args['p'] ? : $page->firstRow) , $page->listRows);
         }
         $rs = $this->typeObj->select();
         return $rs;
     }
-    
     
     /**
     * 获取所有维修项目idname

@@ -11,8 +11,10 @@ use \Exception;
 class TypeController extends Controller {
     
     public function lists(){
-        $list = D('RepairType')->getList();
+        $args = I();
+        $list = D('RepairType')->getList($args, $page);
         
+        $this->assign('page', $page->show());
         $this->assign('list', $list);
         $this->display();
     }
@@ -45,9 +47,9 @@ class TypeController extends Controller {
         $postData = I();
         try{
             $rs = D('RepairType')->save($postData);
-            exit(json_encode(true, null, 'Type/lists'));
         }catch(Exception $e){
-            exit(json_encode(false, $e->getMessage()));
+            json(true, $e->getMessage());
         }
+        json(false, null, U('Type/lists'));
     }
 }

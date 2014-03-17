@@ -8,6 +8,7 @@ return array(
     'LAYOUT_NAME'=>'layout',
     'LOAD_EXT_CONFIG' => 'db',
     'DEFAULT_M_LAYER' => 'Logic', // 更改默认的模型层名称为Logic
+    'LOAD_EXT_FILE' => 'functions'
     // 'TMPL_ENGINE_TYPE' =>'PHP'
     //'TMPL_ACTION_ERROR' => APP_PATH.'/Tpl/Home/Default/Public/success.html',
     //'TMPL_ACTION_SUCCESS' =>  APP_PATH.'/Tpl/Home/Default/Public/success.html',
