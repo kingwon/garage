@@ -6,7 +6,7 @@ return array(
     //'DEFAULT_GROUP' => 'Home',
     'LAYOUT_ON'=>true,
     'LAYOUT_NAME'=>'layout',
-    'LOAD_EXT_CONFIG' => 'db',
+    'LOAD_EXT_CONFIG' => 'db.me',
     'DEFAULT_M_LAYER' => 'Logic', // 更改默认的模型层名称为Logic
     'LOAD_EXT_FILE' => 'functions'
     // 'TMPL_ENGINE_TYPE' =>'PHP'
