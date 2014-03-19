@@ -53,7 +53,7 @@ defined('MODE_PATH')    or define('MODE_PATH',      THINK_PATH.'Mode/'); // 系�
 defined('VENDOR_PATH')  or define('VENDOR_PATH',    LIB_PATH.'Vendor/'); // 第三方类库目录
 defined('COMMON_PATH')  or define('COMMON_PATH',    APP_PATH.'Common/'); // 应用公共目录
 //判断环境加载不同的配置文件
-if(APP_DEBUG){
+if(DOMAIN_TOP == 'me'){
     defined('CONF_PATH')    or define('CONF_PATH',      COMMON_PATH.'Conf.me/'); // 应用配置目录
 }else{
     defined('CONF_PATH')    or define('CONF_PATH',      COMMON_PATH.'Conf/'); // 应用配置目录

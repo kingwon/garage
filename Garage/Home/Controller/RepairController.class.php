@@ -10,8 +10,7 @@ use Think\Controller;
 use \Exception;
 class RepairController extends Controller {
     public function index(){
-        echo 111;die;
-        $this->display();
+        $this->show('欢迎来到强记汽修', 'utf-8');
     }
     
     public function lists(){

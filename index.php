@@ -18,7 +18,7 @@ if(version_compare(PHP_VERSION,'5.3.0','<'))  die('require PHP > 5.3.0 !');
 $_top_domain_name = isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : $_SERVER['HTTP_HOST'];
 $_top_domain_name = ltrim(strtolower(substr($_top_domain_name, -3)), '.');
 define('DOMAIN_TOP', $_top_domain_name);
-if(DOMAIN_TOP == 'me'){
+if(DOMAIN_TOP == 'me' || $_GET['debug']){
     define('APP_DEBUG',true);
 }
 

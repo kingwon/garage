@@ -97,6 +97,7 @@ class DetailLogic extends Model {
             $this->detailObj->page(($p ? : $page->firstRow) , $page->listRows);
         }
         $rs = $this->detailObj->where($args)->order('detail_id desc')->select();
+        // echo $this->detailObj->getLastSql();
         return $rs;
     }
     
